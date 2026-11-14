@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Database\Factories\SupplierFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+#[Fillable(['name', 'email', 'phone', 'address'])]
+class Supplier extends Model
+{
+    /** @use HasFactory<SupplierFactory> */
+    use HasFactory;
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    /** True while any product (including archived ones) references this supplier. */
+    public function isInUse(): bool
+    {
+        return $this->products()->withTrashed()->exists();
+    }
+}

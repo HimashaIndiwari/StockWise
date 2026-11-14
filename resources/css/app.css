@@ -1,0 +1,322 @@
+/* StockWise theme: AdminLTE 4 (bundles Bootstrap 5.3) + Bootstrap Icons + Navy/Emerald/Light-Grey palette (plan §5). */
+@import 'admin-lte/dist/css/adminlte.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+:root {
+    --sw-navy: #172B4D;
+    --sw-navy-dark: #10203a;
+    --sw-sidebar: #243B53;
+    --sw-emerald: #16A36A;
+    --sw-emerald-dark: #12875a;
+    --sw-success-bg: #E9F7EF;
+    --sw-bg: #F4F6F9;
+    --sw-surface: #FFFFFF;
+    --sw-border: #E5E7EB;
+    --sw-text: #334155;
+    --sw-text-muted: #64748B;
+    --sw-warning: #F59E0B;
+    --sw-danger: #DC4C4C;
+    --sw-danger-dark: #c03d3d;
+
+    --bs-primary: var(--sw-navy);
+    --bs-primary-rgb: 23, 43, 77;
+    --bs-success: var(--sw-emerald);
+    --bs-success-rgb: 22, 163, 106;
+    --bs-warning: var(--sw-warning);
+    --bs-warning-rgb: 245, 158, 11;
+    --bs-danger: var(--sw-danger);
+    --bs-danger-rgb: 220, 76, 76;
+    --bs-body-color: var(--sw-text);
+    --bs-body-bg: var(--sw-bg);
+    --bs-secondary-color: var(--sw-text-muted);
+    --bs-border-color: var(--sw-border);
+    --bs-link-color: var(--sw-navy);
+    --bs-link-color-rgb: 23, 43, 77;
+    --bs-link-hover-color: var(--sw-emerald-dark);
+    --bs-link-hover-color-rgb: 18, 135, 90;
+}
+
+body {
+    background-color: var(--sw-bg);
+    color: var(--sw-text);
+}
+
+/* ---------- Buttons (consistent height, palette colors) ---------- */
+.btn {
+    --bs-btn-padding-y: .45rem;
+    --bs-btn-padding-x: .9rem;
+    font-weight: 500;
+}
+.btn-sm {
+    --bs-btn-padding-y: .25rem;
+    --bs-btn-padding-x: .55rem;
+}
+.btn-primary {
+    --bs-btn-bg: var(--sw-navy);
+    --bs-btn-border-color: var(--sw-navy);
+    --bs-btn-hover-bg: var(--sw-navy-dark);
+    --bs-btn-hover-border-color: var(--sw-navy-dark);
+    --bs-btn-active-bg: var(--sw-navy-dark);
+    --bs-btn-active-border-color: var(--sw-navy-dark);
+    --bs-btn-disabled-bg: var(--sw-navy);
+    --bs-btn-disabled-border-color: var(--sw-navy);
+}
+.btn-success {
+    --bs-btn-bg: var(--sw-emerald);
+    --bs-btn-border-color: var(--sw-emerald);
+    --bs-btn-hover-bg: var(--sw-emerald-dark);
+    --bs-btn-hover-border-color: var(--sw-emerald-dark);
+    --bs-btn-active-bg: var(--sw-emerald-dark);
+    --bs-btn-active-border-color: var(--sw-emerald-dark);
+}
+.btn-danger {
+    --bs-btn-bg: var(--sw-danger);
+    --bs-btn-border-color: var(--sw-danger);
+    --bs-btn-hover-bg: var(--sw-danger-dark);
+    --bs-btn-hover-border-color: var(--sw-danger-dark);
+    --bs-btn-active-bg: var(--sw-danger-dark);
+    --bs-btn-active-border-color: var(--sw-danger-dark);
+}
+.btn-outline-primary {
+    --bs-btn-color: var(--sw-navy);
+    --bs-btn-border-color: var(--sw-navy);
+    --bs-btn-hover-bg: var(--sw-navy);
+    --bs-btn-hover-border-color: var(--sw-navy);
+    --bs-btn-active-bg: var(--sw-navy);
+}
+.btn-outline-danger {
+    --bs-btn-color: var(--sw-danger);
+    --bs-btn-border-color: var(--sw-danger);
+    --bs-btn-hover-bg: var(--sw-danger);
+    --bs-btn-hover-border-color: var(--sw-danger);
+    --bs-btn-active-bg: var(--sw-danger);
+}
+
+/* ---------- Header & sidebar ---------- */
+.app-header {
+    background-color: var(--sw-surface) !important;
+    border-bottom: 1px solid var(--sw-border);
+}
+.app-sidebar {
+    background-color: var(--sw-sidebar) !important;
+}
+.app-sidebar .sidebar-brand {
+    background-color: var(--sw-navy);
+    border-bottom-color: rgba(255, 255, 255, .08);
+}
+.app-sidebar .brand-link {
+    text-decoration: none;
+}
+.app-sidebar .brand-text {
+    color: #fff;
+    font-weight: 600 !important;
+    letter-spacing: .02em;
+}
+.app-sidebar .brand-icon {
+    color: var(--sw-emerald);
+    font-size: 1.4rem;
+}
+.app-sidebar .sidebar-menu .nav-link {
+    color: rgba(255, 255, 255, .85);
+}
+.app-sidebar .sidebar-menu .nav-link:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, .08);
+}
+.app-sidebar .sidebar-menu .nav-link.active {
+    color: #fff;
+    background-color: var(--sw-emerald) !important;
+}
+.app-sidebar .sidebar-menu .nav-header {
+    color: rgba(255, 255, 255, .55);
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+/* ---------- Content ---------- */
+.app-main {
+    background-color: var(--sw-bg);
+}
+.app-content-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--sw-navy);
+}
+.card {
+    background-color: var(--sw-surface);
+    border: 1px solid var(--sw-border);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+}
+.card-header {
+    background-color: var(--sw-surface);
+    border-bottom: 1px solid var(--sw-border);
+}
+/* AdminLTE's clearfix pseudo-element becomes a stray flex item in flex headers. */
+.card-header.d-flex::after {
+    display: none;
+}
+.card-title {
+    font-weight: 600;
+    color: var(--sw-navy);
+}
+.table > thead th {
+    color: var(--sw-text-muted);
+    font-size: .8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    background-color: #f8fafc;
+    white-space: nowrap;
+}
+.table td {
+    vertical-align: middle;
+}
+/* Contain absolutely-positioned descendants (e.g. .visually-hidden labels in action buttons)
+   so wide tables scroll inside their wrapper instead of widening the whole page on mobile. */
+.table-responsive {
+    position: relative;
+}
+.form-label {
+    font-weight: 500;
+}
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--sw-emerald);
+    box-shadow: 0 0 0 .2rem rgba(22, 163, 106, .2);
+}
+.text-muted {
+    color: var(--sw-text-muted) !important;
+}
+/* SKUs are rendered in <code>; keep them neutral (Bootstrap's pink reads as an error). */
+code {
+    color: var(--sw-navy);
+    background: #EEF2F7;
+    padding: .1rem .35rem;
+    border-radius: .25rem;
+    white-space: nowrap;
+}
+
+/* ---------- Status badges (icon + text, never color alone) ---------- */
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .35em .65em;
+    font-weight: 600;
+    font-size: .78rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+}
+.badge-status.status-success { background: var(--sw-success-bg); color: #0f6b46; border-color: #bfe8d3; }
+.badge-status.status-warning { background: #FEF3C7; color: #8a5300; border-color: #fcd98b; }
+.badge-status.status-danger  { background: #FDECEC; color: #a32b2b; border-color: #f6c2c2; }
+.badge-status.status-neutral { background: #EEF2F7; color: var(--sw-text); border-color: var(--sw-border); }
+.badge-status.status-navy    { background: #E6EBF3; color: var(--sw-navy); border-color: #cdd6e4; }
+
+/* ---------- Alerts ---------- */
+.alert-success {
+    --bs-alert-bg: var(--sw-success-bg);
+    --bs-alert-color: #0f6b46;
+    --bs-alert-border-color: #bfe8d3;
+}
+.alert-danger {
+    --bs-alert-bg: #FDECEC;
+    --bs-alert-color: #a32b2b;
+    --bs-alert-border-color: #f6c2c2;
+}
+.alert-warning {
+    --bs-alert-bg: #FEF3C7;
+    --bs-alert-color: #8a5300;
+    --bs-alert-border-color: #fcd98b;
+}
+
+/* ---------- Stat cards ---------- */
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    height: 100%;
+}
+.stat-card .stat-icon {
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 3rem;
+    border-radius: .65rem;
+    display: grid;
+    place-items: center;
+    font-size: 1.35rem;
+}
+.stat-card .stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--sw-navy);
+    line-height: 1.1;
+}
+.stat-card .stat-label {
+    color: var(--sw-text-muted);
+    font-size: .85rem;
+}
+.stat-icon.icon-navy    { background: #E6EBF3; color: var(--sw-navy); }
+.stat-icon.icon-success { background: var(--sw-success-bg); color: var(--sw-emerald-dark); }
+.stat-icon.icon-warning { background: #FEF3C7; color: #b45309; }
+.stat-icon.icon-danger  { background: #FDECEC; color: var(--sw-danger); }
+
+/* ---------- Empty state ---------- */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--sw-text-muted);
+}
+.empty-state .bi {
+    font-size: 2.5rem;
+    color: #cbd5e1;
+}
+
+/* ---------- Guest (auth) pages ---------- */
+.auth-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--sw-navy) 0%, var(--sw-sidebar) 60%, #1d4d5a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+}
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    border: 0;
+    border-radius: .9rem;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, .25);
+}
+.auth-brand {
+    color: #fff;
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+.auth-brand:hover {
+    color: #fff;
+}
+.auth-brand .bi {
+    color: var(--sw-emerald);
+}
+
+/* ---------- Product images ---------- */
+.product-thumb {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: .4rem;
+    border: 1px solid var(--sw-border);
+}
+.product-image {
+    max-width: 100%;
+    max-height: 260px;
+    object-fit: contain;
+    border-radius: .5rem;
+    border: 1px solid var(--sw-border);
+}
