@@ -29,5 +29,7 @@
         </button>
     </form>
 
-    <p class="text-muted small text-center mt-4 mb-0">Accounts are created by an administrator.</p>
+    <p class="text-muted small text-center mt-4 mb-0">
+        Don't have an account? <a href="{{ route('register') }}">Create account</a>
+    </p>
 </x-guest-layout>

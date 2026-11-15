@@ -76,19 +76,6 @@ class RoleAccessTest extends TestCase
         $this->assertGuest();
     }
 
-    public function test_public_registration_is_disabled(): void
-    {
-        $this->get('/register')->assertNotFound();
-        $this->post('/register', [
-            'name' => 'Intruder',
-            'email' => 'intruder@example.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
-        ])->assertNotFound();
-
-        $this->assertDatabaseMissing('users', ['email' => 'intruder@example.com']);
-    }
-
     public function test_staff_navigation_does_not_show_admin_links(): void
     {
         $staff = User::factory()->staff()->create();
