@@ -272,15 +272,19 @@ class ProductCrudTest extends TestCase
         $this->assertSame($this->staff->id, $product->fresh()->created_by);
     }
 
-    // ---------- Delete (archive) ----------
+    // ---------- Delete (permanent) ----------
 
-    public function test_product_with_stock_cannot_be_archived(): void
+    public function test_product_with_stock_is_permanently_deleted_with_its_history(): void
     {
         $product = Product::factory()->ownedBy($this->staff)->create(['quantity' => 3]);
+        StockMovement::factory()->create(['product_id' => $product->id, 'user_id' => $this->staff->id]);
 
-        $this->actingAs($this->staff)->delete("/staff/products/{$product->id}")->assertSessionHas('error');
+        $this->actingAs($this->staff)->delete("/staff/products/{$product->id}")
+            ->assertRedirect(route('staff.products.index'))
+            ->assertSessionHas('success');
 
-        $this->assertNotSoftDeleted($product);
+        $this->assertDatabaseMissing('products', ['id' => $product->id]);
+        $this->assertSame(0, StockMovement::where('product_id', $product->id)->count());
     }
 
     public function test_admin_can_list_and_restore_archived_products_but_staff_cannot(): void
@@ -299,16 +303,12 @@ class ProductCrudTest extends TestCase
         $this->assertNotSoftDeleted($product);
     }
 
-    public function test_owner_can_archive_zero_stock_product_and_history_is_preserved(): void
+    public function test_deleted_product_disappears_from_listing_and_show(): void
     {
-        $product = Product::factory()->ownedBy($this->staff)->create(['quantity' => 0, 'name' => 'To Archive']);
-        StockMovement::factory()->create(['product_id' => $product->id, 'user_id' => $this->staff->id]);
+        $product = Product::factory()->ownedBy($this->staff)->create(['quantity' => 0, 'name' => 'To Delete']);
 
         $this->actingAs($this->staff)->delete("/staff/products/{$product->id}")
             ->assertRedirect(route('staff.products.index'));
-
-        $this->assertSoftDeleted($product);
-        $this->assertSame(1, StockMovement::where('product_id', $product->id)->count());
 
         $listed = $this->actingAs($this->staff)->get('/staff/products')->viewData('products');
         $this->assertFalse($listed->contains('id', $product->id));

@@ -167,22 +167,24 @@ class ProductController extends Controller
     }
 
     /**
-     * Archive (soft-delete). Rule: stock must be zero first, so inventory totals
-     * never include archived items. Movement history is always preserved.
+     * Permanent delete, regardless of stock. The product's stock movements are
+     * removed with it (the FK restricts deletes), so its history is lost.
      */
     public function destroy(Product $product): RedirectResponse
     {
         Gate::authorize('delete', $product);
 
-        if ($product->quantity > 0) {
-            return back()->with('error',
-                "\"{$product->name}\" still has {$product->quantity} unit(s) in stock. Record a stock OUT or adjustment to zero before archiving it.");
+        DB::transaction(function () use ($product) {
+            $product->stockMovements()->delete();
+            $product->forceDelete();
+        });
+
+        if ($product->image) {
+            Storage::disk('public')->delete($product->image);
         }
 
-        $product->delete();
-
         return redirect()->to(area_route('products.index'))
-            ->with('success', "Product \"{$product->name}\" archived. Its stock history has been preserved.");
+            ->with('success', "Product \"{$product->name}\" deleted permanently.");
     }
 
     /** Admin-only list of archived (soft-deleted) products. */

@@ -13,8 +13,8 @@
         @endcan
         @can('delete', $product)
             <x-confirm-form :action="area_route('products.destroy', $product)"
-                            :message="'Archive “'.$product->name.'”? It will be hidden from listings, but its stock history is kept.'"
-                            label="Archive" icon="archive" button-class="btn btn-outline-danger" />
+                            :message="'Delete “'.$product->name.'” permanently? The product and all of its stock history will be removed. This cannot be undone.'"
+                            label="Delete" icon="trash" button-class="btn btn-outline-danger" />
         @endcan
     </x-slot>
 
