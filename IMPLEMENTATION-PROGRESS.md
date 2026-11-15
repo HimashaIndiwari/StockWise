@@ -56,8 +56,8 @@ This file records the actual state of the code. Status labels: `NOT STARTED`, `I
 | # | Item | Who | How |
 |---|---|---|---|
 | 1 | Decide on skeleton files `CLAUDE.md` / `AGENTS.md` (they tell AI agents to install Laravel Boost) | **User** | Keep or delete before committing |
-| 2 | Approve Git commit | **User** | Agent runs `git add -A` + `git commit` after approval |
-| 3 | Create a public GitHub repository and approve push | **User** | Provide repo URL; agent runs `git remote add origin …` + `git push -u origin main` |
+| 2 | ~~Approve Git commit~~ | — | **COMPLETED 2026-11-14:** commit `bac1ad5` "feat: build StockWise inventory management system" (189 files; staged content scanned — no `.env`, DB, logs, vendor or password) |
+| 3 | Push to `origin` (`https://github.com/HimashaIndiwari/StockWise.git`) | **User** | **BLOCKED:** `git push -u origin main` → 403 "Permission … denied to HimashaRapidm3" — Windows has cached credentials for a different GitHub account. Sign in as `HimashaIndiwari` (or give `HimashaRapidm3` write access) and push again. |
 | 4 | Open the public repo URL and confirm it is accessible and contains no `.env` | Agent / User | Browser check |
 
 ### Optional (not required by the plan)
